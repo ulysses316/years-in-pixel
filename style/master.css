@@ -1,0 +1,85 @@
+*{
+    font-family: 'Itim', cursive;
+}
+
+.calendar{
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    width: 100%;
+    grid-column-gap: 0;
+}
+
+.calendar a{
+    border: solid #ccc .5px;
+    height: 25px;
+    width: 100%;
+}
+.calendar a[data-mood="1"]{
+    background-color: red;
+}
+.calendar a[data-mood="2"]{
+    background-color: orange;
+}
+.calendar a[data-mood="3"]{
+    background-color: yellow;
+}
+.calendar a[data-mood="4"]{
+    background-color: teal;
+}
+.calendar a[data-mood="5"]{
+    background-color: blue;
+}
+
+.calendar div{
+    display: flex;
+    flex-direction: column;
+}
+
+.weeks{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.months{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(13,1fr);
+}
+
+.months span{
+    text-align: center;
+}
+
+main{
+    display: grid !important;
+    grid-template-columns: repeat(2,1fr);    
+}
+
+.emotions{
+    text-align: center;
+}
+
+i{
+    font-size: 40px;
+}
+
+.v-happy:hover{
+    color: red;
+}
+
+.happy:hover{
+    color: orange;
+}
+
+.meh:hover{
+    color: yellow;
+}
+
+.sad:hover{
+    color: teal;
+}
+
+.v-sad:hover{
+    color: blue;
+}

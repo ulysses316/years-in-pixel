@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "uikit": "^3.5.9"
+  },
+  "name": "year-in-pixels",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "ulysses316 <ulises316@live.com.mx>",
+  "license": "MIT"
+}
