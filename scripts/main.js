@@ -2,10 +2,23 @@ const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov
 let today = new Date();
 let day = today.getDate();
 let month = months[today.getMonth()-1];
+let data = [
+    [0,1,2,3,4,5,1,2,3,4],
+    [0,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2],
+    [0,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5],
+    [2,1,2,3,4,5,1,2,3,3,4,5,1,2,3,4],
+    [0,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5],
+    [4,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4],
+    [0,1,2,3,4,5,3,4,5],
+    [0,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,4,5],
+    [0,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4],
+    [3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5],
+    [0,1,2,3,4,5,1,2,3,4,5,1,2,3,4],
+    [0,1,2,3,4,5,1,2,3,4,5,5,1,2,3,4,5,1,2,3,4,5]
+]
 
 elementMonth = document.querySelector("."+month);
 focusDay =  elementMonth.children[day];
-console.log(focusDay);
 
 const emotions = (emotion, focusElement=focusDay)=>{ 
     switch (emotion) {
@@ -28,7 +41,10 @@ const emotions = (emotion, focusElement=focusDay)=>{
         case 5:
             focusElement.style.background = "red";
             focusElement.dataset.mood = 5;
-            break;                                    
+            break;
+        default:
+            focusElement.style.background = "white";
+            focusElement.dataset.mood = 0; 
     }    
 }
 
@@ -37,3 +53,31 @@ const chageFocusDay = ()=>{
     focusDay = event.target;
 }
 
+const exportData = ()=>{
+    for(month in months){
+        elementMonth = document.querySelector("."+months[month]);
+        for(day of elementMonth.children){
+            data[month].push(day.dataset.mood)   
+        }
+    }
+}
+// const importData = (arr)=>{
+//     for(month in months){
+//         elementMonth = document.querySelector("."+months[month]);
+//         for(day of elementMonth.children){
+//             for(info of arr){
+//                 day.dataset.mood = info;
+//             }
+//         }
+//     }
+// }
+
+const setData = ()=>{
+    for(month in months){
+        elementMonth = document.querySelector("."+months[month]);
+        for(let i = 0; i < elementMonth.children.length; i++){
+            // console.log(data[month][i])
+            emotions(data[month][i],elementMonth.children[i])
+        }
+    }
+}
