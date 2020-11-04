@@ -14,19 +14,19 @@
     height: 25px;
     width: 100%;
 }
-.calendar a[data-mood="1"]{
+.calendar a[data-mood="5"]{
     background-color: red;
 }
-.calendar a[data-mood="2"]{
+.calendar a[data-mood="4"]{
     background-color: orange;
 }
 .calendar a[data-mood="3"]{
     background-color: yellow;
 }
-.calendar a[data-mood="4"]{
+.calendar a[data-mood="2"]{
     background-color: teal;
 }
-.calendar a[data-mood="5"]{
+.calendar a[data-mood="1"]{
     background-color: blue;
 }
 
@@ -83,3 +83,10 @@ i{
 .v-sad:hover{
     color: blue;
 }
+
+@media (max-width: 600px) {
+    main{
+        grid-template-columns: 1fr;    
+    }
+}
+  
