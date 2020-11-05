@@ -13,29 +13,6 @@ for(monthData of data){
     dataChart.push(helper)
 }
 
-// let myChar = new Chart(ctx, {
-//     type: 'line',
-//     data: {
-//         xLabels: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
-//         yLabels: ['Request Added', 'Request Viewed', 'Request Accepted', 'Request Solved', 'Solving Confirmed'],
-//         datasets: [{
-//             label: 'Animated state',
-//             data: dataChart,
-//             borderWidth: 1
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             yAxes: [{
-//                 ticks: {
-//                     beginAtZero: true,
-//                     max:3
-//                 }
-//             }]
-//         }
-//     }
-// });
-
 let myChar = new Chart(ctx, {
     type: 'line',
     data: {
@@ -89,12 +66,3 @@ let myChar = new Chart(ctx, {
       }
     } 
 });
-
-
-
-
-// const repetidos = ar => ar.filter (
-
-//     (value,pos,self) => self.slice(pos+1).indexOf(value) >= 0 && pos === self.indexOf(value)
-
-// );
