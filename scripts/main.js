@@ -56,21 +56,11 @@ const chageFocusDay = ()=>{
 const exportData = ()=>{
     for(month in months){
         elementMonth = document.querySelector("."+months[month]);
-        for(day of elementMonth.children){
-            data[month].push(day.dataset.mood)   
+        for(let i = 0; i < elementMonth.children.length; i++){
+            data[month][i] = parseInt(elementMonth.children[i].dataset.mood)    ;
         }
     }
 }
-// const importData = (arr)=>{
-//     for(month in months){
-//         elementMonth = document.querySelector("."+months[month]);
-//         for(day of elementMonth.children){
-//             for(info of arr){
-//                 day.dataset.mood = info;
-//             }
-//         }
-//     }
-// }
 
 const setData = ()=>{
     for(month in months){
