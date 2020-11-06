@@ -1,3 +1,4 @@
+// ============================================= Variables =====================================================
 /*
 Aqui establecemos las variables globales que usaremos dentro de los eventos y
 buscamos la fecha actual para que la pagina te coloque automaticamente en el dia correspondiente
@@ -13,10 +14,9 @@ Estas variables estan asociadas al dia y mes que correspondan.
 let elementMonth = document.querySelector("."+month);
 let focusDay =  elementMonth.children[day];
 
-
-
 let data;
-
+// ============================================= Variables =====================================================
+// ============================================= Bloque 1 - Inicio =============================================
 /*
     Emotions es el evento encargado de cambiar el color de la casilla y del dataset del HTML 
     y con la funcion addDayEmortionArray()
@@ -60,41 +60,6 @@ const emotions = (emotion, focusElement=focusDay)=>{
     }   
 }
 
-// Este evento unicamente cambia el focusDay por el dia al cual le demos click en la tabla
-const chageFocusDay = ()=>{
-    focusDay = event.target;
-}
-
-/*
-    Este evento se encargara de leer todos los dias del calendario 
-    y leer sus dataset(el cual cambiamos con la funcion emotions)
-    y cambiar los valores dentro de nuestro arreglo data
-*/
-const exportData = ()=>{
-    for(month in months){
-        elementMonth = document.querySelector("."+months[month]);
-        for(let i = 0; i <= elementMonth.children.length; i++){
-            data[month][i] = parseInt(elementMonth.children[i].dataset.mood);
-        }
-    }
-}
-
-/*
-    Este evento se encargara de leer todos los datos en nuestro arreglo data
-    y cambiar los dataset y asignar su color en el calendario con la funcion emotions
-    cada vez que se ejecute este evento tambien ejecutara el evento que carga nuestra grafica
-*/
-const importData = ()=>{
-    for(month in months){
-        elementMonth = document.querySelector("."+months[month]);
-        for(let i = 0; i < elementMonth.children.length; i++){
-            // console.log(data[month][i])
-            emotions(data[month][i],elementMonth.children[i])
-        }
-    }
-    chartRender()
-}
-
 /*
     Esta funcion asigna en el lugar correspondiente del arreglo su valor al momento de que cambiamos un valor
     funciona en conjunto con el evento emotions()
@@ -116,11 +81,36 @@ const addDayEmotionArray = (value)=>{
     chartRender();
 }
 
-const clearData = ()=>{
-    data = false;
-    createData();
-    chartRender()
+// Este evento unicamente cambia el focusDay por el dia al cual le demos click en la tabla
+const chageFocusDay = ()=>{
+    focusDay = event.target;
 }
+
+// ============================================= Bloque 1 - Fin ================================================
+
+/*
+    Este evento se encargara de leer todos los dias del calendario 
+    y leer sus dataset(el cual cambiamos con la funcion emotions)
+    y cambiar los valores dentro de nuestro arreglo data
+*/
+const exportData = ()=>{
+    for(month in months){
+        elementMonth = document.querySelector("."+months[month]);
+        for(let i = 0; i < elementMonth.children.length; i++){
+            // data[month][i] = parseInt(elementMonth.children[i].dataset.mood);
+            elementMonth.children[i].style.background = "white"
+        }
+    }
+}
+
+/*
+    Este evento se encargara de leer todos los datos en nuestro arreglo data
+    y cambiar los dataset y asignar su color en el calendario con la funcion emotions
+    cada vez que se ejecute este evento tambien ejecutara el evento que carga nuestra grafica
+*/
+
+
+// ======================================== Bloque 2 - Inicio ==================================================
 
 const createData = ()=>{
     if(typeof(data) !== "object"){
@@ -138,7 +128,28 @@ const createData = ()=>{
     }
 }
 
+const cleanCalendar = ()=>{
+    for(month in months){
+        elementMonth = document.querySelector("."+months[month]);
+        for(let i = 0; i < elementMonth.children.length; i++){
+            // console.log(data[month][i])
+            elementMonth.children[i].dataset.mood = 0;
+            elementMonth.children[i].style.background = "white"
+        }
+    }
+}
+
+
+const clearData = ()=>{
+    data = false;
+    createData();
+    cleanCalendar();
+    chartRender();
+}
+
+// ============================================= Bloque 2 - Fin ================================================
+
 
 // /*Main*/
-createData()
+createData();
 // /*Main*/
