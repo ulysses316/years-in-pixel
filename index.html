@@ -444,6 +444,11 @@
                     <i onclick="emotions(1)" class="v-sad fas fa-sad-tear"></i>
                     <i onclick="emotions(0)" class="erase fas fa-times-circle"></i>
                 </div>
+                <div class="uk-flex uk-flex-around uk-margin">
+                    <button onclick="exportData()" class="uk-button uk-button-primary">Export Data</button>
+                    <button onclick="importData()" class="uk-button uk-button-primary">Import Data</button>
+                    <button onclick="clearData()" class="uk-button uk-button-primary">Clear Data</button>
+                </div>
                 <hr>
                 <div>
                     <canvas id="myChart" width="400" height="400"></canvas>
@@ -459,6 +464,3 @@
     <script src="./scripts/chart.js"></script>
 </body>
 </html>
-
-<div onclick="exportData()">Exportar</div>
-<div onclick="importData()">importar</div>

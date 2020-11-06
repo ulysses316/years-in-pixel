@@ -13,20 +13,9 @@ Estas variables estan asociadas al dia y mes que correspondan.
 let elementMonth = document.querySelector("."+month);
 let focusDay =  elementMonth.children[day];
 
-let data = [
-    [0,1,2,3,4,5,1,2,3,4],
-    [0,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2],
-    [0,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5],
-    [2,1,2,3,4,5,1,2,3,3,4,5,1,2,3,4],
-    [0,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5],
-    [4,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4],
-    [0,1,2,3,4,5,3,4,5],
-    [0,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,4,5],
-    [0,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4],
-    [3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5],
-    [0,1,2,3,4,5,1,2,3,4,5,1,2,3,4],
-    [0,1,2,3,4,5,1,2,3,4,5,5,1,2,3,4,5,1,2,3,4,5]
-]
+
+
+let data;
 
 /*
     Emotions es el evento encargado de cambiar el color de la casilla y del dataset del HTML 
@@ -84,7 +73,7 @@ const chageFocusDay = ()=>{
 const exportData = ()=>{
     for(month in months){
         elementMonth = document.querySelector("."+months[month]);
-        for(let i = 0; i < elementMonth.children.length; i++){
+        for(let i = 0; i <= elementMonth.children.length; i++){
             data[month][i] = parseInt(elementMonth.children[i].dataset.mood);
         }
     }
@@ -124,4 +113,32 @@ const addDayEmotionArray = (value)=>{
         }
     }
     data[indexMonth][indexDay] = value;
+    chartRender();
 }
+
+const clearData = ()=>{
+    data = false;
+    createData();
+    chartRender()
+}
+
+const createData = ()=>{
+    if(typeof(data) !== "object"){
+    // Creacion de nuestro arreglo con la informacion
+        data = new Array(12);
+        for(let i = 0; i< months.length; i++){
+            elementMonth = document.querySelector("."+months[i]);
+            cantidad = elementMonth.childElementCount;
+            data[i] = new Array(cantidad)
+            data[i].fill(0)
+        }
+    }
+    else{
+        importData();
+    }
+}
+
+
+// /*Main*/
+createData()
+// /*Main*/
