@@ -7,7 +7,7 @@ const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov
 let today = new Date();
 let day = today.getDate();
 let month = months[today.getMonth()];
-
+let year = today.getFullYear();
 /*
 Estas variables estan asociadas al dia y mes que correspondan.
 */
@@ -15,6 +15,17 @@ let elementMonth = document.querySelector("."+month);
 let focusDay =  elementMonth.children[day];
 
 let data;
+
+/*
+    Este se encarga de determinar si es un año bisiesto y agregar un dia a febrero si corresponde
+*/
+let isLeaf = new Date(year,1,29).getMonth() == 1;
+if (isLeaf){
+    let a = document.createElement("a");
+    a.setAttribute("onclick", "chageFocusDay()");
+    a.setAttribute("data-mood", "0");
+    document.querySelector(".Feb").append(a);
+}
 // ============================================= Variables =====================================================
 // ============================================= Bloque 1 - Inicio =============================================
 /*
